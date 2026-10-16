@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Tasklist from './Components/Tasklist'
 import Taskform from './Components/Taskform'
 import ProgressTracker from './Components/ProgressTracker'
+import './App.css';
 
 export default function App() {
   const[tasks, setTasks] = useState([]);
@@ -14,12 +15,18 @@ export default function App() {
     setTasks([...tasks,task]);
   } 
 
-  const updateTask = () => {
-
+  const updateTask = (updatedTask, index) => {
+    const newtasks = [...tasks];
+    newtasks[index] = updatedTask;
+    setTasks(newtasks)
   } 
 
-  const deleteTask = () => {
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_ , i) => i!= index))
+  }
 
+  const clearTask = () => {
+    setTasks([]);
   }
 
   return (
@@ -30,7 +37,10 @@ export default function App() {
       <Tasklist tasks = {tasks}
       updateTask = {updateTask}
       deleteTask = {deleteTask}/>
-      <ProgressTracker />
+      <ProgressTracker tasks = {tasks}/>
+
+      {tasks.length >0 && 
+      (<button onClick={clearTask} className='clear-btn'>Clear All Sync</button>)}
     </div>
   )
 }
