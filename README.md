@@ -4,6 +4,10 @@
 
 DailySync helps users organize their daily tasks and stay productive.
 
+## 🚀 Live Demo
+
+**[View DailySync Live](https://ashwinleo10.github.io/DailySync-project/)**
+
 ## Features
 
 - Create and manage daily tasks
